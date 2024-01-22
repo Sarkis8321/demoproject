@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-
+use App\Http\Controllers\CategoryAppController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,5 +28,6 @@ Route::middleware([
     })->name('dashboard');
 
     Route::get('/admin', [AdminController::class, 'index'])->name('admin')->middleware('admin');
+    Route::post('/admin/addcategory', [CategoryAppController::class, 'store'])->middleware('admin')->name('admin-addcategory');
 
 });
