@@ -17,6 +17,11 @@ class CategoryAppController extends Controller
         $category->name = $request->input('catname');
         $category->save();
         return redirect()->route('admin');
-
     }
+
+    public function getAllCategories(){
+        $allCategories = CategoryApp::all();
+        dd($allCategories);
+    }
+
 }

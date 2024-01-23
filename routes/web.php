@@ -30,4 +30,6 @@ Route::middleware([
     Route::get('/admin', [AdminController::class, 'index'])->name('admin')->middleware('admin');
     Route::post('/admin/addcategory', [CategoryAppController::class, 'store'])->middleware('admin')->name('admin-addcategory');
 
+    Route::get('/admin/cat', [CategoryAppController::class, 'getAllCategories'])->name('get_all_categories')->middleware('admin');
+
 });
