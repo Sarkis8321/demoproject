@@ -32,4 +32,6 @@ Route::middleware([
 
     Route::get('/admin/cat', [CategoryAppController::class, 'getAllCategories'])->name('get_all_categories')->middleware('admin');
 
+    Route::get('/admin/deletecat/{id}', [CategoryAppController::class, 'deleteCatById'])->name('delete_cat_by_id')->middleware('admin');
+
 });

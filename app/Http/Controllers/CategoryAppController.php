@@ -24,4 +24,20 @@ class CategoryAppController extends Controller
         dd($allCategories);
     }
 
+    public function deleteCatById($id){
+        $delCat = CategoryApp::find($id)->delete();
+        $arr = array();
+        $arr['isErr'] = false;
+        $arr['text'] = '';
+       
+        if ($delCat){
+            $arr['text'] = 'Данные успешно удалены!';
+        } else {
+            $arr['isErr'] = true;
+            $arr['text'] = 'Произошла ошибка на сервере, попробуйте позже!';
+        }
+        return json_encode($arr);
+    }
+
+
 }
