@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryAppController;
+use App\Http\Controllers\ApplicationFormsController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,12 +28,12 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-
+// admin routs
     Route::get('/admin', [AdminController::class, 'index'])->name('admin')->middleware('admin');
     Route::post('/admin/addcategory', [CategoryAppController::class, 'store'])->middleware('admin')->name('admin-addcategory');
-
     Route::get('/admin/cat', [CategoryAppController::class, 'getAllCategories'])->name('get_all_categories')->middleware('admin');
-
     Route::get('/admin/deletecat/{id}', [CategoryAppController::class, 'deleteCatById'])->name('delete_cat_by_id')->middleware('admin');
+// user2 routs
+    Route::get('/backoffice', [ApplicationFormsController::class, 'index'])->name('backoffice')->middleware('user2');
 
 });
