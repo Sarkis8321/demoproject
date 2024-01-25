@@ -35,5 +35,5 @@ Route::middleware([
     Route::get('/admin/deletecat/{id}', [CategoryAppController::class, 'deleteCatById'])->name('delete_cat_by_id')->middleware('admin');
 // user2 routs
     Route::get('/backoffice', [ApplicationFormsController::class, 'index'])->name('backoffice')->middleware('user2');
-
+    Route::post('/backoffice/addapp', [ApplicationFormsController::class, 'store'])->middleware('user2')->name('backoffice-addapp');
 });

@@ -20,6 +20,11 @@
                             Админ панель
                         </x-nav-link>
                     @endif
+                    @if (Auth::user()->role == 2)
+                        <x-nav-link href="{{ route('backoffice') }}" :active="request()->routeIs('backoffice')">
+                            Подать заявку
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 
