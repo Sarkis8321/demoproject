@@ -47,6 +47,16 @@
                 </div>
             </form>
 
+            <div>
+            @forelse ($applications as $app)
+               <p> {{ $app-> name }}</p>
+               <p>{{ $app-> description }}</p>
+               <hr>
+            @empty
+            <p>Заявок нет, и славо богу</p>
+            @endforelse
+            </div>
+
 
             </div>
         </div>

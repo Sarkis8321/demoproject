@@ -12,10 +12,12 @@ class ApplicationFormsController extends Controller
     
     public function index(): View
     {
+        $userApp = ApplicationForms::where('users',  Auth::id())->get();
         $cat = CategoryApp::all();
         return view('backoffice', [
             'allcat' => $cat,
-            'id' => Auth::id()
+            'id' => Auth::id(),
+            'applications' => $userApp
         ]);
     }
 
