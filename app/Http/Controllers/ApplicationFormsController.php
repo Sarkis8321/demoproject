@@ -9,7 +9,7 @@ use App\Models\ApplicationForms;
 
 class ApplicationFormsController extends Controller
 {
-    
+    // главная страница формы заявки 
     public function index(): View
     {
         $userApp = ApplicationForms::where('users',  Auth::id())->get();
@@ -20,7 +20,7 @@ class ApplicationFormsController extends Controller
             'applications' => $userApp
         ]);
     }
-
+//  добавить новую категорию в базу данных
     public function store(Request $request){
         $request->validate([
             'title' => 'required|string|max:100',
@@ -38,6 +38,14 @@ class ApplicationFormsController extends Controller
         $app->save();
         return redirect()->route('backoffice');
     }
+
+    // страница администратора  для просмотра всех заявок
+    public function adminIndex(){
+        $app = ApplicationForms::all();
+        return view('admin.index', ['applications'=>$app]);
+         
+    }
+
 
 
 }

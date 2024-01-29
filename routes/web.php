@@ -33,7 +33,8 @@ Route::middleware([
     Route::post('/admin/addcategory', [CategoryAppController::class, 'store'])->middleware('admin')->name('admin-addcategory');
     Route::get('/admin/cat', [CategoryAppController::class, 'getAllCategories'])->name('get_all_categories')->middleware('admin');
     Route::get('/admin/deletecat/{id}', [CategoryAppController::class, 'deleteCatById'])->name('delete_cat_by_id')->middleware('admin');
-// user2 routs
+    Route::get('/admin/apps', [ApplicationFormsController::class, 'adminIndex'])->name('admin_apps')->middleware('admin');
+    // user2 routs
     Route::get('/backoffice', [ApplicationFormsController::class, 'index'])->name('backoffice')->middleware('user2');
     Route::post('/backoffice/addapp', [ApplicationFormsController::class, 'store'])->middleware('user2')->name('backoffice-addapp');
 });

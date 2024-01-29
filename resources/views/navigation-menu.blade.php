@@ -19,6 +19,9 @@
                         <x-nav-link href="{{ route('admin') }}" :active="request()->routeIs('admin')">
                             Админ панель
                         </x-nav-link>
+                        <x-nav-link href="{{ route('admin_apps') }}" :active="request()->routeIs('admin_apps')">
+                            Список заявок
+                        </x-nav-link>
                     @endif
                     @if (Auth::user()->role == 2)
                         <x-nav-link href="{{ route('backoffice') }}" :active="request()->routeIs('backoffice')">
