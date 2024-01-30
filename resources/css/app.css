@@ -5,3 +5,17 @@
 [x-cloak] {
     display: none;
 }
+.visible {
+    position: fixed;
+    top: 10%;
+    left: 30%;
+    z-index: 9999;
+}
+.bghover {
+    background-color: rgba(0,0,0,.5);
+    position: fixed;
+    width: 100vw;
+    height: 100%;
+    top: 0;
+    left: 0;
+}

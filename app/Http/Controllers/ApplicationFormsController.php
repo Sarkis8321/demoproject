@@ -46,6 +46,21 @@ class ApplicationFormsController extends Controller
          
     }
 
+    public function updateStatus(Request $request){
+        $request->validate([
+            'id' => 'required',
+            'status' =>  'required'
+        ]);
+        $application = ApplicationForms::find($request->input('id'));
+        if ($request->input('status')) {
+            $application->status=1;
+        } else{
+             $application->status=0;
+        };
+         $application->save();
+         return response()->json(['success'=>"Статус изменен"]);
+    }
+
 
 
 }
