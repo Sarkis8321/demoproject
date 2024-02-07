@@ -15,12 +15,22 @@ class ApplicationFormsController extends Controller
         $userApp = ApplicationForms::where('users',  Auth::id())->get();
         $cat = CategoryApp::all();
 
+
+        $statusId = [
+            'Новый',
+            'На рассмотрении',
+            'Принят',
+            'Отклонен'
+        ];
+
         foreach($userApp as $app) {
             foreach($cat as $item) {
                 if ($item->id == $app -> category_apps) {
                         $app['category']= $item -> name;
                 }
             }
+            $app['statusName'] = $statusId[$app->status];
+
         }
 
         return view('backoffice', [

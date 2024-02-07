@@ -66,7 +66,7 @@
                         <td> {{ $app-> name }}</td>
                         <td>{{ $app-> description }}</td>
                         <td>{{ $app-> category }}</td>
-                        <td>{{ $app-> status }}</td>
+                        <td>{{ $app-> statusName }}</td>
                     </tr>
                     @empty
                     <p>Заявок нет, и славо богу</p>
