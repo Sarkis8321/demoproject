@@ -19,3 +19,8 @@
     top: 0;
     left: 0;
 }
+.mytable tr td{
+    border: 2px solid #ccc;
+    text-align: center;
+    padding: 10px;
+}

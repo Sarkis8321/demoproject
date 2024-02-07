@@ -14,6 +14,15 @@ class ApplicationFormsController extends Controller
     {
         $userApp = ApplicationForms::where('users',  Auth::id())->get();
         $cat = CategoryApp::all();
+
+        foreach($userApp as $app) {
+            foreach($cat as $item) {
+                if ($item->id == $app -> category_apps) {
+                        $app['category']= $item -> name;
+                }
+            }
+        }
+
         return view('backoffice', [
             'allcat' => $cat,
             'id' => Auth::id(),
@@ -43,7 +52,6 @@ class ApplicationFormsController extends Controller
     public function adminIndex(){
         $app = ApplicationForms::all();
         return view('admin.index', ['applications'=>$app]);
-         
     }
 
     public function updateStatus(Request $request){
@@ -52,12 +60,10 @@ class ApplicationFormsController extends Controller
             'status' =>  'required'
         ]);
         $application = ApplicationForms::find($request->input('id'));
-        if ($request->input('status')) {
-            $application->status=1;
-        } else{
-             $application->status=0;
-        };
-         $application->save();
+      
+        $application->status = $request->input('status');
+    
+        $application->save();
          return response()->json(['success'=>"Статус изменен"]);
     }
 

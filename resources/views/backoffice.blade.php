@@ -48,13 +48,35 @@
             </form>
 
             <div>
-            @forelse ($applications as $app)
-               <p> {{ $app-> name }}</p>
-               <p>{{ $app-> description }}</p>
-               <hr>
-            @empty
-            <p>Заявок нет, и славо богу</p>
-            @endforelse
+
+
+            <table class="mytable">
+                <thead>
+                <tr>
+                    <td>Название</td>
+                    <td>Описание</td>
+                    <td>Категория</td>
+                    <td>Статус</td>
+                </tr>
+                </thead>
+                <tbody>
+
+                    @forelse ($applications as $app)
+                    <tr>
+                        <td> {{ $app-> name }}</td>
+                        <td>{{ $app-> description }}</td>
+                        <td>{{ $app-> category }}</td>
+                        <td>{{ $app-> status }}</td>
+                    </tr>
+                    @empty
+                    <p>Заявок нет, и славо богу</p>
+                    @endforelse
+
+                </tbody>
+            </table>
+
+
+          
             </div>
 
 
